@@ -1,5 +1,5 @@
 /**
- * @class ProductTitle
+ * @function ProductSKU
  */
 
 import './style.pcss'

@@ -7,14 +7,14 @@ import './style.pcss'
 import * as React from 'react'
 
 interface Props extends React.HTMLProps<HTMLElement> {
-  tag: string
-  text: string
-  classes: string
-  styles: object
+  tag?: string
+  text?: string
+  classes?: string
+  styles?: object
 }
 
 const Brand: React.FunctionComponent<Props> = (props: Props) => {
-  const { tag, text, classes, styles } = props
+  const { tag = 'span', text = '', classes = '', styles = {} } = props
 
   return React.createElement(
     tag,

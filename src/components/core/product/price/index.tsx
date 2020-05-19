@@ -15,24 +15,50 @@ interface Props extends React.HTMLProps<HTMLElement> {
   styles: object
   dataAttributes: object
   hasSalePrice: boolean
+  currencySettings: object
+}
+
+interface StoreSettings {
+  currency?: string
+}
+
+const CurrencyFormatter = (settings: StoreSettings, rawPrice: number): string => {
+  const { currency } = settings
+
+  const languageCode =
+    typeof window !== 'undefined' ? window.navigator.language || 'en-US' : 'en-US'
+
+  return new Intl.NumberFormat(languageCode, {
+    style: 'currency',
+    currency: currency || 'USD',
+  }).format(rawPrice)
 }
 
 const Price: React.FunctionComponent<Props> = (props: Props) => {
-  const { tag, price, salePrice, classes, styles, tagID, dataAttributes, hasSalePrice } = props
-  const classesArray: string[] = [classes]
+  const {
+    tag,
+    price,
+    salePrice,
+    classes,
+    styles,
+    tagID,
+    dataAttributes,
+    hasSalePrice,
+    currencySettings,
+  } = props
 
-  const insertDecimal = (num: number): string => (num / 100).toFixed(2).toString()
+  const classesArray: string[] = [classes]
 
   const SalePrice = React.createElement(
     'span',
     { className: 'bc-sale-price' },
-    insertDecimal(salePrice)
+    CurrencyFormatter(currencySettings, salePrice)
   )
 
   const OriginalPrice = React.createElement(
     'span',
     { className: 'bc-current-price' },
-    insertDecimal(price)
+    CurrencyFormatter(currencySettings, price)
   )
 
   if (hasSalePrice) {
@@ -51,4 +77,4 @@ const Price: React.FunctionComponent<Props> = (props: Props) => {
   )
 }
 
-export { Price }
+export { Price, CurrencyFormatter }

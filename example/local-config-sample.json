@@ -1,0 +1,6 @@
+{
+  "_instructions": "Add your API Access Token, Client ID, and Store hash in the values below to connect to your store's data",
+  "access_token": "",
+  "client_id": "",
+  "store_hash": ""
+}

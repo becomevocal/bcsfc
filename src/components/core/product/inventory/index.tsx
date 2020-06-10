@@ -2,32 +2,31 @@
  * @function Inventory Level
  */
 
-import './style.pcss'
-
 import * as React from 'react'
 
+import style from './inventory.module.css'
+
 interface Props extends React.HTMLProps<HTMLElement> {
-  tag: string
-  classes: string
-  styles: object
-  showInventoryLevel: boolean
+  tag?: string
+  classes?: string
+  styles?: object
+  showInventoryLevel?: boolean
   inventoryLevel: number
-  showWarning: boolean
+  showWarning?: boolean
   inventoryWarningLevel: number
-  warningMessage: string
-  inventoryTracking: string
+  warningMessage?: string
 }
 
 const ProductInventory: React.FunctionComponent<Props> = (props: Props) => {
   const {
     tag = 'span',
-    classes,
-    styles,
+    classes = '',
+    styles = {},
     showInventoryLevel = true,
     inventoryLevel,
     showWarning = true,
     inventoryWarningLevel,
-    warningMessage,
+    warningMessage = '',
   } = props
 
   const setInventoryLevel = (): string | object => {
@@ -35,7 +34,7 @@ const ProductInventory: React.FunctionComponent<Props> = (props: Props) => {
       return ''
     }
 
-    return <span className="bc-product-inventory-level">{inventoryLevel} In Stock</span>
+    return <span className={style.bcProductInventoryLevel}>{inventoryLevel} In Stock</span>
   }
 
   const setInventoryWarning = (): string | object => {
@@ -45,7 +44,7 @@ const ProductInventory: React.FunctionComponent<Props> = (props: Props) => {
 
     return (
       // TODO: Need to consider i18n here.
-      <span className="bc-product-low-inventory-warning">
+      <span className={style.bcProductLowInventoryWarning}>
         {warningMessage || `${inventoryLevel} left in stock.`}
       </span>
     )
@@ -54,7 +53,7 @@ const ProductInventory: React.FunctionComponent<Props> = (props: Props) => {
   return React.createElement(
     tag,
     {
-      className: `bc-product-inventory-level ${classes}`,
+      className: `${style.bcProductInventoryLevel} ${classes}`,
       style: styles,
     },
     [setInventoryLevel(), setInventoryWarning()]

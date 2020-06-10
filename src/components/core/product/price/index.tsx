@@ -1,21 +1,21 @@
 /**
- * @function Price
+ * @function ProductPrice
  */
 
-import './style.pcss'
-
 import * as React from 'react'
+
+import style from './price.module.css'
 
 interface Props extends React.HTMLProps<HTMLElement> {
   price: number
   salePrice: number
-  tag: string
-  classes: string
-  tagID: string
-  styles: object
-  dataAttributes: object
-  hasSalePrice: boolean
   currencySettings: object
+  tag?: string
+  classes?: string
+  tagID?: string
+  styles?: object
+  dataAttributes?: object
+  hasSalePrice?: boolean
 }
 
 interface StoreSettings {
@@ -34,35 +34,39 @@ const CurrencyFormatter = (settings: StoreSettings, rawPrice: number): string =>
   }).format(rawPrice)
 }
 
-const Price: React.FunctionComponent<Props> = (props: Props) => {
+const ProductPrice: React.FunctionComponent<Props> = (props: Props) => {
   const {
-    tag,
     price,
     salePrice,
-    classes,
-    styles,
-    tagID,
-    dataAttributes,
-    hasSalePrice,
     currencySettings,
+    tag = 'span',
+    classes = '',
+    styles = {},
+    tagID = '',
+    dataAttributes = {},
+    hasSalePrice = false,
   } = props
 
   const classesArray: string[] = [classes]
 
-  const SalePrice = React.createElement(
-    'span',
-    { className: 'bc-sale-price' },
-    CurrencyFormatter(currencySettings, salePrice)
-  )
+  let SalePrice = null
+
+  if (salePrice !== 0) {
+    SalePrice = React.createElement(
+      'span',
+      { className: style.bcSalePrice },
+      CurrencyFormatter(currencySettings, salePrice)
+    )
+  }
 
   const OriginalPrice = React.createElement(
     'span',
-    { className: 'bc-current-price' },
+    { className: style.bcCurrentPrice },
     CurrencyFormatter(currencySettings, price)
   )
 
   if (hasSalePrice) {
-    classesArray.push('bc-has-sale-price')
+    classesArray.push(style.bcHasSalePrice)
   }
 
   return React.createElement(
@@ -77,4 +81,4 @@ const Price: React.FunctionComponent<Props> = (props: Props) => {
   )
 }
 
-export { Price, CurrencyFormatter }
+export { ProductPrice, CurrencyFormatter }

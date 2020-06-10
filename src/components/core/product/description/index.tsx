@@ -2,25 +2,25 @@
  * @function Description
  */
 
-import './style.pcss'
-
 import * as React from 'react'
 
+import style from './description.module.css'
+
 interface Props extends React.HTMLProps<HTMLElement> {
-  tag: string
-  classes: string
-  styles: object
   text: string
+  tag?: string
+  classes?: string
+  styles?: object
 }
 
 const Description: React.FunctionComponent<Props> = (props: Props) => {
-  const { tag, classes, styles, text } = props
+  const { text, tag = 'div', classes = '', styles = {} } = props
 
   // eslint-disable-next-line react/no-danger-with-children
   return React.createElement(
     tag,
     {
-      className: `bc-product-description ${classes}`,
+      className: `${style.bcProductDescription} ${classes}`,
       style: styles,
       dangerouslySetInnerHTML: { __html: text },
     },

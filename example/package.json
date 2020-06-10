@@ -33,12 +33,16 @@
     "build/*"
   ],
   "dependencies": {
+    "@types/enzyme": "^3.10.5",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-preact-pure": "^2.2.0",
     "preact": "^10.3.1",
     "preact-jsx-chai": "^3.0.0",
     "preact-markup": "^2.0.0",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "bigcommerce-react-theme-components": "link:.."
   },
   "devDependencies": {
     "@types/jest": "^25.1.2",

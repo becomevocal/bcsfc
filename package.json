@@ -21,7 +21,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "@types/react-flatpickr": "^3.8.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "lodash": "^4.17.15",
+    "react-flatpickr": "^3.10.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -67,6 +71,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-postcss-modules": "^2.0.1",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
     "ts-loader": "^6.2.1",

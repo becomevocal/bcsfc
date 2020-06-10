@@ -1,7 +1,7 @@
-import { Price } from './index'
+import { ProductPrice } from './index'
 
 describe('Price', () => {
   it('is truthy', () => {
-    expect(Price).toBeTruthy()
+    expect(ProductPrice).toBeTruthy()
   })
 })

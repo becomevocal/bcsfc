@@ -11,7 +11,7 @@
  *              Create a stateless FunctionComponent and return your JSX.
  */
 
-import './style.pcss'
+import './style.css'
 
 import * as React from 'react'
 

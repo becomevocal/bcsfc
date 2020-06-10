@@ -1,0 +1,24 @@
+.bcProductGridWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bcProductGridWrapper > * {
+  flex: 0 0 auto;
+  max-width: 100%;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 540px) {
+  .bcProductGridWrapper > * {
+    max-width: 48%;
+  }
+}
+
+@media (min-width: 960px) {
+  .bcProductGridWrapper > * {
+    max-width: 32%;
+  }
+}

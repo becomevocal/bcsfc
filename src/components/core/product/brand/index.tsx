@@ -2,24 +2,24 @@
  * @function Brand
  */
 
-import './style.pcss'
-
 import * as React from 'react'
 
+import style from './brand.module.css'
+
 interface Props extends React.HTMLProps<HTMLElement> {
+  text: string
   tag?: string
-  text?: string
   classes?: string
   styles?: object
 }
 
 const Brand: React.FunctionComponent<Props> = (props: Props) => {
-  const { tag = 'span', text = '', classes = '', styles = {} } = props
+  const { text, tag = 'span', classes = '', styles = {} } = props
 
   return React.createElement(
     tag,
     {
-      className: `bc-product-brand ${classes}`,
+      className: `${style.bcProductBrand} ${classes}`,
       style: styles,
     },
     text

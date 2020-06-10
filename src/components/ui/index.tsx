@@ -5,5 +5,6 @@
  */
 
 import { ProductCard } from './product-card'
+import { ProductGrid } from './product-grid'
 
-export { ProductCard }
+export { ProductCard, ProductGrid }

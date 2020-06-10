@@ -1,10 +1,11 @@
-import {FunctionalComponent} from "preact";
+import {FunctionalComponent, h} from "preact";
 import * as style from "./style.css";
 import {getBrandName, getProduct, getProductImages, getCustomFields, getStorefront} from "../api/service";
 import { BCStorefront } from "../api/storefront";
 import Header from "./header";
+import FormExample from "./form";
 import * as Product from '../../../src/components/core/product'
-import * as Widgets from '../../../src/components/ui'
+import { Core, Widgets } from 'bigcommerce-react-theme-components'
 import {useEffect, useState} from "preact/hooks";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -66,7 +67,7 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Title Component</h3>
-        <Product.ProductTitle
+        <Core.ProductTitle
           tag="h1"
           classes="bc-example-product-title"
           styles={{}}
@@ -78,32 +79,29 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Price Component</h3>
-        <Product.Price
+        <Core.ProductPrice
           tag="div"
           tagID={product.id}
           classes="bc-example-price"
-          styles={{}}
-          dataAttributes={{}}
           currencySettings={store_config}
           price={product.price}
           salePrice={product.sale_price}
-          hasSalePrice={true}
+          hasSalePrice={product.sale_price !== 0}
         />
       </div>
 
       <div className={style.bcComponent}>
         <h3>Product Condition Component</h3>
-        <Product.ProductCondition
+        <Core.ProductCondition
           tag="span"
           text="Used"
-          classes="bc-example-product-condition"
           styles={{'background-color': 'silver', 'color': 'white', 'padding': '4px 8px'}}
         />
       </div>
 
       <div className={style.bcComponent}>
         <h3>Product SKU Component</h3>
-        <Product.ProductSKU
+        <Core.ProductSKU
           tag="span"
           classes="bc-example-sku"
           styles={{'background': 'teal', 'color': 'white', 'padding': '4px 8px'}}
@@ -113,7 +111,7 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Brand Component</h3>
-        <Product.Brand
+        <Core.Brand
           tag="span"
           classes="bc-example-brand"
           styles={{'font-weight': '700', 'color': '#555'}}
@@ -123,7 +121,7 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Description Component</h3>
-        <Product.Description
+        <Core.Description
           tag="div"
           classes="bc-example-brand"
           styles={{'font-size': '14px', 'line-height': '18px'}}
@@ -133,18 +131,18 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Image Component</h3>
-        <Product.ProductImage
+        <Core.ProductImage
           src={image.url_standard}
           altText={image.meta}
           wrapperClasses="bc-image-wrapper-example"
           classes="bc-image-example"
-          styles={{'backgorund': '#efefef', 'border': '2px solid lightgrey'}}
+          styles={{'background': '#efefef', 'border': '2px solid lightgrey'}}
         />
       </div>
 
       <div className={style.bcComponent}>
         <h3>Product Specs Component</h3>
-        <Product.ProductSpecs
+        <Core.ProductSpecs
           tag="ul"
           classes="bc-example-specs"
           styles={{'font-size': '18px', 'line-height': '22px'}}
@@ -155,7 +153,7 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Inventory Level Component</h3>
-        <Product.ProductInventory
+        <Core.ProductInventory
           tag="div"
           classes="bc-example-inventory-level"
           styles={{}}
@@ -168,6 +166,11 @@ const App: FunctionalComponent = () => {
         />
       </div>
 
+      <div className={style.bcComponent}>
+        <h3>Product Form</h3>
+        <FormExample key="product-form" product={product} />
+      </div>
+
       <h1>UI/Widget Components</h1>
 
       <div className={style.bcComponent}>
@@ -176,9 +179,22 @@ const App: FunctionalComponent = () => {
           product={product}
           image={image}
           brand={brand}
+          currencySettings={store_config}
           cardClasses="bc-product-card--example"
           cardStyles={{"max-width": "33.3333%"}}
         />
+      </div>
+
+      <div className={style.bcComponent}>
+        <h3>Product Grid Component</h3>
+        <Widgets.ProductGrid cardClasses="bc-product-grid--example">
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+          <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
+        </Widgets.ProductGrid>
       </div>
     </div>
   );

@@ -2,23 +2,24 @@
  * @function ProductSKU
  */
 
-import './style.pcss'
-
 import * as React from 'react'
+
+import style from './sku.module.css'
 
 interface Props extends React.HTMLProps<HTMLElement> {
   text: string
-  classes: string
-  styles: object
+  tag?: string
+  classes?: string
+  styles?: object
 }
 
 const ProductSKU: React.FunctionComponent<Props> = (props: Props) => {
-  const { text, classes, styles } = props
+  const { text, tag = 'span', classes = '', styles = {} } = props
 
   return React.createElement(
-    'span',
+    tag,
     {
-      className: `bc-product-sku ${classes}`,
+      className: `${style.bcProductSku} ${classes}`,
       style: styles,
     },
     text

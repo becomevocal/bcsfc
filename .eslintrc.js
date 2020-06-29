@@ -62,5 +62,6 @@ module.exports = {
       { functions: false, classes: true, variables: true, typedefs: true },
     ],
     "simple-import-sort/sort": "error",
+    "@typescript-eslint/camelcase": "off",
   },
 };

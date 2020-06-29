@@ -1,0 +1,16 @@
+.bcProductPrice {
+  display: block;
+}
+
+.bcSalePrice {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.bcCurrentPrice {
+  display: inline-block;
+}
+
+.bcHasSalePrice .bcCurrentPrice {
+  text-decoration: line-through;
+}

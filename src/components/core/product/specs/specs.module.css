@@ -1,0 +1,20 @@
+.bcProductSpecs {
+  display: block;
+}
+
+ul.bcProductSpecs {
+  margin: 0.5em 0;
+}
+
+.bcProductSpec {
+  margin-bottom: 0.5em;
+}
+
+.bcProductSpecLabel {
+  display: inline-block;
+}
+
+.bcProductSpecValue {
+  display: inline-block;
+  margin-left: 0.35em;
+}

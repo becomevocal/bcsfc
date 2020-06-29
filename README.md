@@ -15,25 +15,27 @@ See: [BigCommerce Developer Docs](https://developer.bigcommerce.com/).
 
 ## Install
 
+For now, until we deploy a package to NPM, you'll want to use the `link` feature for npm.
+1. Copy this repo into a directory of your choosing within your project.
+2. in your `package.json`, add an entry under `dependencies` for `"storefront-ui-components": "link:../YOUR/PATH/TO/THE/REPO"`
+  2.1 For example, since our `example` app is in the root dir, the link to the package in that `package.json` is `"link:.."`
+3. run
 ```bash
-npm install --save bigcommerce-react-theme-components
+yarn install
 ```
-
-```bash
-yarn add bigcommerce-react-theme-components
-```
+4. Now you can import components from the library using `import { Core, Widget } from 'storefront-ui-components'`
 
 ## Usage
 
 ```tsx
 import * as React from 'react'
 
-import ProductTitle from 'bigcommerce-react-theme-components'
+import { Core, Widget } from 'storefront-ui-components'
 
 class Example extends React.Component {
   render () {
     return (
-        <ProductTitle
+        <Core.ProductTitle
           tag="h1"
           componentClass="bc-example-product-title"
           componentID="123-title"
@@ -44,6 +46,137 @@ class Example extends React.Component {
   }
 }
 ```
+
+## Components
+`?` Optional props for each Component
+`**` Component accepts children element overrides
+
+### Core Components
+
+#### ProductTitle
+**Props:**
+```
+tag?: string default: h2
+text: string
+classes?: string
+tagID?: string
+styles?: object
+dataAttributes?: object
+```
+
+#### ProductDescription
+**Props:**
+```
+tag?: string default: div
+text: string
+classes?: string
+styles?: object
+```
+
+#### ProductImage
+**Props:**
+```
+src: string
+altText?: string
+wrapperClasses?: string
+classes?: string
+styles?: object
+```
+
+#### ProductPrice
+**Props:**
+```
+price: number
+salePrice: number
+currencySettings: object
+tag?: string default: span
+classes?: string
+tagID?: string
+styles?: object
+dataAttributes?: object
+hasSalePrice?: boolean default: false
+```
+
+#### ProductBrand
+**Props:**
+```
+text: string
+tag?: string default: span
+classes?: string
+styles?: object
+```
+
+#### ProductCondition
+**Props:**
+```
+text: string
+tag?: string default: span
+classes?: string
+styles?: object
+```
+
+#### ProductCondition
+**Props:**
+```
+text: string
+tag?: string default: span
+classes?: string
+styles?: object
+```
+
+
+#### ProductInventory
+**Props:**
+```
+tag?: string default: span
+classes?: string
+styles?: object
+showInventoryLevel?: boolean
+inventoryLevel: number
+showWarning?: boolean
+inventoryWarningLevel: number
+warningMessage?: string
+```
+
+#### ProductSKU
+**Props:**
+```
+text: string
+tag?: string default: span
+classes?: string
+styles?: object
+```
+
+#### ProductSpecs
+**Props:**
+```
+tag?: string default: ul
+textObject: object
+customFields?: array
+classes?: string
+styles?: object
+```
+
+### Widget/UI Components
+
+#### ProductCard **
+This can be overridden by adding your own JSX children.
+
+**Props:**
+```
+product: object
+image: object
+brand: object
+cardClasses?: string
+cardStyles?: object
+```
+
+Default product card utilizes the following core components:
+- ProductImage
+- ProductTitle
+- ProductCondition
+- ProductPrice
+- Brand
 
 ## License
 

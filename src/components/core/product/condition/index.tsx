@@ -2,24 +2,24 @@
  * @function ProductCondition
  */
 
-import './style.pcss'
-
 import * as React from 'react'
 
+import style from './condition.module.css'
+
 interface Props extends React.HTMLProps<HTMLElement> {
+  text: string
   tag?: string
-  text?: string
   classes?: string
   styles?: object
 }
 
 const ProductCondition: React.FunctionComponent<Props> = (props: Props) => {
-  const { tag = 'span', text = '', classes = '', styles = {} } = props
+  const { text, tag = 'span', classes = '', styles = {} } = props
 
   return React.createElement(
     tag,
     {
-      className: `bc-product-condition ${classes}`,
+      className: `${style.bcProductCondition} ${classes}`,
       style: styles,
     },
     text

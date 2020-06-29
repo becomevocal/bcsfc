@@ -1,0 +1,11 @@
+.bcProductImage {
+  display: block;
+  max-width: 100%;
+}
+
+.bcProductImage figcaption {}
+
+.bcProductImageWrapper {
+  margin: 0;
+  padding: 0;
+}

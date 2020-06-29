@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductForm passes props to children 1`] = `
+Object {
+  "children": "hello",
+  "formData": Object {},
+  "onFormChange": [Function],
+  "onFormInit": [Function],
+  "product": Object {},
+}
+`;
+
+exports[`ProductForm renders 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): ShallowWrapper {
+    Symbol(enzyme.__root__): [Circular],
+    Symbol(enzyme.__unrendered__): <ProductForm
+      action="http://test.com/json"
+      classes="hello"
+      method="POST"
+      onChange={[Function]}
+      onSubmit={[Function]}
+      product={Object {}}
+      styles={Object {}}
+    />,
+    Symbol(enzyme.__renderer__): Object {
+      "batchedUpdates": [Function],
+      "checkPropTypes": [Function],
+      "getNode": [Function],
+      "render": [Function],
+      "simulateError": [Function],
+      "simulateEvent": [Function],
+      "unmount": [Function],
+    },
+    Symbol(enzyme.__node__): Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "action": "http://test.com/json",
+        "children": Array [],
+        "className": "bc-product-form hello",
+        "encType": "multipart/form-data",
+        "method": "POST",
+        "onSubmit": [Function],
+        "style": Object {},
+      },
+      "ref": null,
+      "rendered": Array [],
+      "type": "form",
+    },
+    Symbol(enzyme.__nodes__): Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "action": "http://test.com/json",
+          "children": Array [],
+          "className": "bc-product-form hello",
+          "encType": "multipart/form-data",
+          "method": "POST",
+          "onSubmit": [Function],
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": "form",
+      },
+    ],
+    Symbol(enzyme.__options__): Object {
+      "adapter": ReactSixteenAdapter {
+        "options": Object {
+          "enableComponentDidUpdateOnSetState": true,
+          "legacyContextMode": "parent",
+          "lifecycles": Object {
+            "componentDidUpdate": Object {
+              "onSetState": true,
+            },
+            "getChildContext": Object {
+              "calledByRenderer": false,
+            },
+            "getDerivedStateFromError": true,
+            "getDerivedStateFromProps": Object {
+              "hasShouldComponentUpdateBug": false,
+            },
+            "getSnapshotBeforeUpdate": true,
+            "setState": Object {
+              "skipsComponentDidUpdateOnNullish": true,
+            },
+          },
+        },
+      },
+      Symbol(enzyme.__providerValues__): undefined,
+    },
+    Symbol(enzyme.__providerValues__): Map {},
+  },
+  Symbol(enzyme.__unrendered__): null,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "action": "http://test.com/json",
+      "children": Array [],
+      "className": "bc-product-form hello",
+      "encType": "multipart/form-data",
+      "method": "POST",
+      "onSubmit": [Function],
+      "style": Object {},
+    },
+    "ref": null,
+    "rendered": Array [],
+    "type": "form",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "action": "http://test.com/json",
+        "children": Array [],
+        "className": "bc-product-form hello",
+        "encType": "multipart/form-data",
+        "method": "POST",
+        "onSubmit": [Function],
+        "style": Object {},
+      },
+      "ref": null,
+      "rendered": Array [],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__rootNodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "action": "http://test.com/json",
+        "children": Array [],
+        "className": "bc-product-form hello",
+        "encType": "multipart/form-data",
+        "method": "POST",
+        "onSubmit": [Function],
+        "style": Object {},
+      },
+      "ref": null,
+      "rendered": Array [],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__providerValues__): null,
+}
+`;

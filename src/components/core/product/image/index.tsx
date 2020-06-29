@@ -2,9 +2,9 @@
  * @function ProductImage
  */
 
-import './style.pcss'
-
 import * as React from 'react'
+
+import style from './image.module.css'
 
 interface Props extends React.HTMLProps<HTMLElement> {
   src: string
@@ -20,10 +20,10 @@ const ProductImage: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <figure
       aria-labelledby={altText}
-      className={`bc-product-image-wrapper ${wrapperClasses}`}
+      className={`${style.bcProductImageWrapper} ${wrapperClasses}`}
       style={styles}
     >
-      <img src={src} alt={altText} className={`bc-product-image ${classes}`} />
+      <img src={src} alt={altText} className={`${style.bcProductImage} ${classes}`} />
       <figcaption>{altText}</figcaption>
     </figure>
   )

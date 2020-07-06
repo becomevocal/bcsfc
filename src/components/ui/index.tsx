@@ -5,6 +5,9 @@
  */
 
 import { ProductCard } from './product-card'
+import { ProductDetailPage } from './product-detail-page'
 import { ProductGrid } from './product-grid'
+import { ProductQuickView } from './product-quickview'
+import { ProductReviews } from './product-reviews'
 
-export { ProductCard, ProductGrid }
+export { ProductCard, ProductGrid, ProductReviews, ProductDetailPage, ProductQuickView }

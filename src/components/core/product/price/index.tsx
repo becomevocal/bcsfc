@@ -49,7 +49,7 @@ const ProductPrice: React.FunctionComponent<Props> = (props: Props) => {
 
   const classesArray: string[] = [classes]
 
-  let SalePrice = null
+  let SalePrice
 
   if (salePrice !== 0) {
     SalePrice = React.createElement(

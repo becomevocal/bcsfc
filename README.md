@@ -314,6 +314,85 @@ Default product reviews utilizes the following core components:
 - ProductForm
 - Description
 
+### Cart Components
+
+#### Provider **
+This can be overridden by adding your own JSX children. This component
+is a provider pattern that will pass cart, style, and event props down
+to any children passed in.
+
+**Props:**
+```
+cart: CartType
+children: any
+styles?: object
+onUpdate: (method: string, id: string, payload: object) => void
+onCheckout?: (value: object) => boolean
+```
+
+Default Cart children are:
+- CartItems
+- Subtotal
+- Checkout
+
+All cart children are provided with props of
+- cart
+- styles
+- onUpdate
+- onCheckout
+
+Note that the above styles object is passed to all children, and can
+style the children components using the following classes:
+- cartProvider
+- cartItems
+- cartItem
+- cartItemPrices
+- cartItemTotal
+- cartSubtotal
+- cartSubtotalText
+- cartCheckout
+
+#### CartItems **
+Given a cart object with a `lineItems` object from a bigcommerce cart
+api call, this object will display the line items with a default `Item`
+component that can be overriden.  Note that all props can already be
+provided by CartProvider above.
+
+**Props:**
+```
+cart: CartType
+onUpdate: (method: string, id: string, payload: object) => void
+styles?: any
+ItemComponent?: any
+```
+
+Note: `ItemComponent` default is the pre-written `CartItem` shown in
+examples, and is automatically provided with the same props as `CartItems`
+and an additional `item` prop of type `CartItem` type
+
+
+#### Checkout  **
+Simply a button that will trigger the onCheckout event provided by the
+provider when clicked. Default button text will read `Checkout`, but can
+be overridden by passing in any children to the component.
+
+**Props:**
+```
+children: object | string
+onCheckout: (method: string, id: string, payload: object) => void
+styles?: any
+```
+
+#### Subtotal **
+Provided with a cart object from the provider, this component will
+display the total cart amount based on the cart currency.
+
+**Props:**
+```
+cart: object
+styles?: any
+```
+
 ## License
 
 MIT © [BigCommerce](https://github.com/bigcommerce)

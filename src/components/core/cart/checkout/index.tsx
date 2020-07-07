@@ -2,16 +2,16 @@ import React from 'react'
 
 interface Props extends React.HTMLProps<HTMLElement> {
   children: object | string
-  onClick?: (value: object) => void
+  onCheckout?: (value: object) => void
   styles?: any
 }
 
 const Checkout: React.FunctionComponent<Props> = ({
   children = ['Checkout'], // TODO: Update once i18n is available
-  onClick = () => {},
+  onCheckout = () => {},
   styles = {},
 }) => (
-  <button className={styles.cartCheckout} onClick={onClick} type="submit">
+  <button className={styles.cartCheckout} onCheckout={onCheckout} type="submit">
     {children}
   </button>
 )

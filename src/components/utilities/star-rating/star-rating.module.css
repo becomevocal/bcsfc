@@ -1,0 +1,29 @@
+.bcProductReview__RatingWrapper {
+  display: block;
+  margin: 8px 0;
+}
+
+.bcProductReview__Rating {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.bcProductReview__RatingTop {
+  overflow: hidden;
+  color: #fc0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bcProductReview__RatingBottom {
+  color: #e0e0e0;
+}
+
+.bcProductReview__Prefix {
+  display: inline-block;
+  margin-right: 12px;
+  vertical-align: middle;
+  font-weight: bold;
+}

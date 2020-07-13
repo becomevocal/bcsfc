@@ -1,30 +1,31 @@
-import {FunctionalComponent, h} from "preact";
+import { FunctionalComponent, h } from "preact";
 import * as style from "./style.css";
-import {getBrandName, getProduct, getProductImages, getCustomFields, getStorefront} from "../api/service";
+import {getBrandName, getProduct, getProductImages, getCustomFields, getStorefront, getProductReviews} from "../api/service";
 import { BCStorefront } from "../api/storefront";
 import Header from "./header";
 import FormExample from "./form";
-import * as Product from '../../../src/components/core/product'
+import CartExample from "./cart";
 import { Core, Widgets } from 'bigcommerce-react-theme-components'
 import {useEffect, useState} from "preact/hooks";
+import A11yDialog from 'mt-a11y-dialog'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 if ((module as any).hot) {
-  // tslint:disable-next-line:no-var-requires
-  require("preact/debug");
+    // tslint:disable-next-line:no-var-requires
+    require("preact/debug");
 }
 
 const App: FunctionalComponent = () => {
-
   const [hasError, setErrors] = useState(false);
   const [product, setProducts] = useState({});
   const [brand, setBrands] = useState({});
   const [image, setImages] = useState({});
   const [specs, setSpecs] = useState({});
   const [store_config, setConfig] = useState({});
-  const data = {id: 431};
+  const [reviews, setReviews] = useState({});
+  const data = {id: 119};
   const brandData = {id: 39};
-  const imageQuery = 431;
+  const imageQuery = 119;
 
   useEffect(() => {
     getStorefront()
@@ -59,7 +60,30 @@ const App: FunctionalComponent = () => {
         setErrors(err)
         console.log(hasError)
       })
+
+    getProductReviews({id: 119})
+      .then((res): object => setReviews(res))
+      .catch(err => {
+        setErrors(err)
+        console.log(hasError)
+      })
   }, [])
+
+  const dialogTrigger = document.querySelector('[data-js="trigger-bc-quickview"]:not(.initialized)')
+
+  if (dialogTrigger) {
+    dialogTrigger.classList.add('initialized');
+    const dialogOptions = {
+      trigger: dialogTrigger,
+      closeButtonClasses: style.a11YDialogCloseButton,
+      contentClasses: style.a11YDialogContent,
+      overlayClasses: style.a11YDialogOverlay,
+      wrapperClasses: style.a11YDialog,
+      effect: 'fade',
+    }
+
+    const dialog = new A11yDialog(dialogOptions);
+  }
 
   return (
     <div id="app" class={style.body}>
@@ -171,6 +195,8 @@ const App: FunctionalComponent = () => {
         <FormExample key="product-form" product={product} />
       </div>
 
+      <CartExample />
+
       <h1>UI/Widget Components</h1>
 
       <div className={style.bcComponent}>
@@ -187,7 +213,7 @@ const App: FunctionalComponent = () => {
 
       <div className={style.bcComponent}>
         <h3>Product Grid Component</h3>
-        <Widgets.ProductGrid cardClasses="bc-product-grid--example">
+        <Widgets.ProductGrid classes="bc-product-grid--example">
           <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
           <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
           <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
@@ -195,6 +221,37 @@ const App: FunctionalComponent = () => {
           <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
           <Widgets.ProductCard product={product} image={image} brand={brand} currencySettings={store_config} />
         </Widgets.ProductGrid>
+      </div>
+
+      <div className={style.bcComponent}>
+        <h3>Product Reviews Component</h3>
+        <Widgets.ProductReviews classes="bc-product-review-list--example" reviews={reviews} />
+      </div>
+
+      <div className={style.bcComponent}>
+        <h3>Product Detail Page (PDP) Component</h3>
+        <Widgets.ProductDetailPage
+          product={product}
+          specs={specs}
+          image={image}
+          brand={brand}
+          currencySettings={store_config}
+          reviews={reviews}
+        />
+      </div>
+
+      <div className={style.bcComponent}>
+        <h3>Product QuickView Component</h3>
+
+        <button data-js="trigger-bc-quickview" data-content="bc-quickview-content">Product QuickView Demo</button>
+        <script data-js="bc-quickview-content" type="text/template">
+          <Widgets.ProductQuickView
+            product={product}
+            image={image}
+            brand={brand}
+            currencySettings={store_config}
+          />
+        </script>
       </div>
     </div>
   );

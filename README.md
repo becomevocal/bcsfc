@@ -157,6 +157,30 @@ classes?: string
 styles?: object
 ```
 
+#### ProductReview
+**Props:**
+```
+review: ReviewData
+tag?: string
+classes?: string
+tagID?: string
+styles?: object
+dataAttributes?: object
+
+interface ReviewData {
+  date_created: string
+  date_modified: string
+  date_reviewed: string
+  email: string
+  id: number
+  name: string
+  rating: number
+  status: string
+  text: string
+  title: string
+}
+```
+
 ### Widget/UI Components
 
 #### ProductCard **
@@ -177,6 +201,197 @@ Default product card utilizes the following core components:
 - ProductCondition
 - ProductPrice
 - Brand
+
+#### ProductReviews **
+This can be overridden by adding your own JSX children.
+
+**Props:**
+```
+reviews: object
+tag?: string
+classes?: string
+tagID?: string
+styles?: object
+dataAttributes?: object
+```
+
+Default product reviews utilizes the following core components:
+- ProductReview
+
+#### ProductDetailPage **
+This can be overridden by adding your own JSX children.
+
+**Props:**
+```
+product: ProductObject
+image: ImageObject
+brand: BrandObject
+reviews?: object
+specs?: string[]
+currencySettings?: object
+PDPClasses?: string
+PDPStyles?: object
+
+interface ProductObject {
+  name: string
+  description: string
+  condition: string
+  price: number
+  sale_price: number
+  sku: string
+  weight: number
+  width: number
+  height: number
+  depth: number
+  reviews_count: number
+  reviews_rating_sum: number
+}
+
+interface ImageObject {
+  url_standard: string
+  meta: string
+}
+
+interface BrandObject {
+  name: string
+}
+```
+
+Default product reviews utilizes the following core/UI components:
+- ProductImage
+- ProductTitle
+- ProductCondition
+- ProductBrand
+- ProductPrice
+- StarRating
+- ProductSKU
+- ProductForm
+- Description
+- ProductSpecs
+- ProductReviews
+
+#### ProductQuickView **
+This can be overridden by adding your own JSX children.
+
+**Props:**
+```
+product: ProductObject
+image: ImageObject
+brand: BrandObject
+currencySettings?: object
+PDPClasses?: string
+PDPStyles?: object
+
+interface ProductObject {
+  name: string
+  description: string
+  condition: string
+  price: number
+  sale_price: number
+  sku: string
+  reviews_count: number
+  reviews_rating_sum: number
+}
+
+interface ImageObject {
+  url_standard: string
+  meta: string
+}
+
+interface BrandObject {
+  name: string
+}
+```
+
+Default product reviews utilizes the following core components:
+- ProductImage
+- ProductTitle
+- ProductCondition
+- ProductBrand
+- ProductPrice
+- StarRating
+- ProductSKU
+- ProductForm
+- Description
+
+### Cart Components
+
+#### Provider **
+This can be overridden by adding your own JSX children. This component
+is a provider pattern that will pass cart, style, and event props down
+to any children passed in.
+
+**Props:**
+```
+cart: CartType
+children: any
+styles?: object
+onUpdate: (method: string, id: string, payload: object) => void
+onCheckout?: (value: object) => boolean
+```
+
+Default Cart children are:
+- CartItems
+- Subtotal
+- Checkout
+
+All cart children are provided with props of
+- cart
+- styles
+- onUpdate
+- onCheckout
+
+Note that the above styles object is passed to all children, and can
+style the children components using the following classes:
+- cartProvider
+- cartItems
+- cartItem
+- cartItemPrices
+- cartItemTotal
+- cartSubtotal
+- cartSubtotalText
+- cartCheckout
+
+#### CartItems **
+Given a cart object with a `lineItems` object from a bigcommerce cart
+api call, this object will display the line items with a default `Item`
+component that can be overriden.  Note that all props can already be
+provided by CartProvider above.
+
+**Props:**
+```
+cart: CartType
+onUpdate: (method: string, id: string, payload: object) => void
+styles?: any
+ItemComponent?: any
+```
+
+Note: `ItemComponent` default is the pre-written `CartItem` shown in
+examples, and is automatically provided with the same props as `CartItems`
+and an additional `item` prop of type `CartItem` type
+
+
+#### Checkout  **
+Simply a button that will trigger the onCheckout event provided by the
+provider when clicked. Default button text will read `Checkout`, but can
+be overridden by passing in any children to the component.
+
+**Props:**
+```
+children: object | string
+onCheckout: (method: string, id: string, payload: object) => void
+styles?: any
+```
+
+#### Subtotal **
+Provided with a cart object from the provider, this component will
+display the total cart amount based on the cart currency.
+
+**Props:**
+```
+cart: object
+styles?: any
+```
 
 ## License
 

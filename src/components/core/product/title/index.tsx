@@ -1,5 +1,5 @@
 /**
- * @class ProductTitle
+ * @function ProductTitle
  */
 
 import * as React from 'react'

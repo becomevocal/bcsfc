@@ -32,15 +32,24 @@ export default {
         );
 
         config.devServer = {
-          quiet: true,
-          proxy: [
-            {
-              path: '/stores/**',
+          quiet: false,
+          proxy: {
+            '/stores': {
               target: 'https://api.bigcommerce.com',
+              path: '^/stores/**',
+              changeOrigin: true,
+              changeHost: true,
+              logLevel: 'debug',
+            },
+            '/cart': {
+              target: 'https://moderntribe.bigcommerce.support',
+              path: '^/cart/**',
+              logLevel: 'debug',
+              pathRewrite: {'^/cart' : ''},
               changeOrigin: true,
               changeHost: true,
             }
-          ]
+          }
         }
     }
 };

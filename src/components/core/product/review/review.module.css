@@ -1,0 +1,25 @@
+.bcProductReview {
+  display: block;
+  margin-top: 2em;
+}
+
+.bcProductReview__Title {
+  margin: 4px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.bcProductReview__Meta {
+  font-size: 0.75em;
+  display: block;
+}
+
+.bcProductReview__RatingStars {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.bcProductReview__Text {
+
+}

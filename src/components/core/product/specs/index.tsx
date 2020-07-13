@@ -7,7 +7,7 @@ import * as React from 'react'
 
 import style from './specs.module.css'
 
-interface Measurements {
+export interface Measurements {
   weight: number
   width: number
   height: number

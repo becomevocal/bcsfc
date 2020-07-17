@@ -1,9 +1,9 @@
 {
-  "name": "bigcommerce-react-theme-components",
+  "name": "bcsfc",
   "version": "0.0.1",
-  "description": "BigCommerce theme components built for Preact and React",
+  "description": "BCSFC",
   "license": "MIT",
-  "repository": "bigcommerce/bigcommerce-react-theme-components",
+  "repository": "becomevocal/bcsfc",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
